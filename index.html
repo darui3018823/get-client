@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPとユーザーエージェントの取得</title>
     <script>
-        // グローバルIPアドレスを取得
-        async function getGlobalIP() {
+        // グローバルIPアドレスとホスト名を取得
+        async function getIPAndHostname() {
             try {
-                const response = await fetch('https://api.ipify.org?format=json');
+                const response = await fetch('https://ipinfo.io/json?token=YOUR_TOKEN_HERE'); // Replace YOUR_TOKEN_HERE with your actual token
                 const data = await response.json();
                 document.getElementById('ip').innerText = `グローバルIPアドレス: ${data.ip}`;
+                document.getElementById('hostname').innerText = `ホスト名: ${data.hostname}`;
             } catch (error) {
-                console.error('IPアドレスの取得中にエラーが発生しました:', error);
+                console.error('IPアドレスとホスト名の取得中にエラーが発生しました:', error);
             }
         }
 
@@ -24,7 +25,7 @@
 
         // ページロード時に情報を取得
         window.onload = function() {
-            getGlobalIP();
+            getIPAndHostname();
             getUserAgent();
         }
     </script>
@@ -32,6 +33,8 @@
 <body>
     <h1>IPとユーザーエージェントの取得</h1>
     <p id="ip">グローバルIPアドレス: 取得中...</p>
+    <p id="hostname">ホスト名: 取得中...</p>
     <p id="user-agent">HTTP_USER_AGENT: 取得中...</p>
 </body>
 </html>
+

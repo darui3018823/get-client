@@ -61,7 +61,7 @@
         function copyToClipboard() {
             const info = document.getElementById('info').innerText;
             navigator.clipboard.writeText(info).then(() => {
-                alert("情報をコピーしました！");
+                alert("コッピー成功!");
             }).catch(err => {
                 console.error("コピーに失敗しました:", err);
             });
